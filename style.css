@@ -1,0 +1,197 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #1a1a1a;
+}
+
+#three-canvas {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+}
+
+/* Modais */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    transition: opacity 0.5s ease;
+}
+
+.modal-card {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.modal-card h2 { color: #333; margin-bottom: 10px; }
+.modal-card p { color: #666; margin-bottom: 20px; font-size: 14px; }
+
+.modal-card input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 20px;
+    text-align: center;
+    transition: border 0.3s;
+}
+
+.modal-card input:focus { border-color: #ff6b81; }
+
+.modal-card button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    background: #ff6b81;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+}
+
+.modal-card button:hover { background: #ff4757; transform: scale(1.02); }
+
+/* Interface de Usuário */
+#ui-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+.hidden { display: none !important; }
+
+/* Status Header */
+.header-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 15px 25px;
+    border-radius: 20px;
+    pointer-events: auto;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    text-align: center;
+}
+
+.header-card h1 {
+    font-size: 22px;
+    color: #2d3436;
+    margin-bottom: 10px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 12px;
+    font-weight: bold;
+    color: #636e72;
+}
+
+.bar-bg {
+    width: 100%;
+    height: 12px;
+    background: #dfe6e9;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 3px;
+}
+
+.bar-fill {
+    height: 100%;
+    background: #2ed573;
+    border-radius: 6px;
+    transition: width 0.4s ease, background-color 0.4s;
+}
+
+/* Toast de instrução */
+.toast {
+    align-self: center;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    pointer-events: auto;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Barra de Ações */
+.actions-bar {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    pointer-events: auto;
+    margin-bottom: 10px;
+}
+
+.action-btn {
+    background: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #2d3436;
+    cursor: pointer;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+}
+
+.action-btn:active { transform: translateY(0); }
+
+.action-btn.highlight {
+    background: #ff6b81;
+    color: white;
+}
