@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Tamagotchi 3D 🐶</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Importando Three.js e OrbitControls via CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+
+    <!-- Canvas do 3D -->
+    <canvas id="three-canvas"></canvas>
+
+    <!-- Modal de Apresentação / Dar Nome -->
+    <div id="name-modal" class="modal-overlay">
+        <div class="modal-card">
+            <h2>🐾 Bem-vinda ao seu novo Pet 3D!</h2>
+            <p>Escolha um nome fofo para o seu doguinho antes de começar:</p>
+            <input type="text" id="pet-name-input" placeholder="Ex: Bob, Pipoca, Mel..." maxlength="15">
+            <button id="start-btn" onclick="confirmPetName()">Iniciar Aventura ❤️</button>
+        </div>
+    </div>
+
+    <!-- UI do Jogo (Barras e Botões) -->
+    <div id="ui-container" class="hidden">
+        <!-- Topo: Informações e Status -->
+        <div class="header-card">
+            <h1 id="display-pet-name">Seu Doguinho</h1>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <span>🍖 Fome</span>
+                    <div class="bar-bg"><div id="bar-hunger" class="bar-fill" style="width: 80%;"></div></div>
+                </div>
+                <div class="stat-box">
+                    <span>💤 Energia</span>
+                    <div class="bar-bg"><div id="bar-energy" class="bar-fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="stat-box">
+                    <span>⚽ Diversão</span>
+                    <div class="bar-bg"><div id="bar-fun" class="bar-fill" style="width: 50%;"></div></div>
+                </div>
+                <div class="stat-box">
+                    <span>🎵 Vibe / Música</span>
+                    <div class="bar-bg"><div id="bar-music" class="bar-fill" style="width: 70%;"></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instruções Dinâmicas -->
+        <div id="instruction-toast" class="toast">
+            Clique em "Jogar Bola" para iniciar o minigame!
+        </div>
+
+        <!-- Ações do Botão Principal -->
+        <div class="actions-bar">
+            <button class="action-btn" onclick="feedPet()">🍖 Alimentar</button>
+            <button class="action-btn" onclick="sleepPet()">💤 Dormir</button>
+            <button id="play-btn" class="action-btn highlight" onclick="toggleFetchGame()">⚽ Jogar Bola</button>
+            <button class="action-btn" onclick="toggleMusic()">🎵 Música</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
